@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Movie} from "../../../types";
 import MovieListFunc from "../MovieListFunc/MovieListFunc";
 
@@ -60,6 +60,14 @@ const MovieFormFunc = () => {
         }))
     }
 
+    useEffect(() => {
+        const startedState = JSON.parse(localStorage.getItem('movies')!)
+        setState(startedState)
+    }, [])
+
+    useEffect(() => {
+        localStorage.setItem('movies', JSON.stringify(state));
+    }, [state]);
     return (
         <div className='window'>
             <form onSubmit={addMovie}>
