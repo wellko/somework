@@ -29,6 +29,14 @@ class MovieForm extends Component<{}, State> {
         }
     }
 
+    componentDidUpdate() {
+        localStorage.setItem('movies2', JSON.stringify(this.state));
+    }
+
+    componentDidMount() {
+        this.setState(JSON.parse(localStorage.getItem('movies2')!));
+    }
+
     addMovieName = (e: React.ChangeEvent<HTMLInputElement>) => {
         this.setState(prev => ({
             ...prev,
