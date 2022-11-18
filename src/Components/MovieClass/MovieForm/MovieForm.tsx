@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
-import {Movie} from "../../types";
-import MovieList from "./MovieList";
+import {Movie} from "../../../types";
+import MovieList from "../MovieList/MovieList";
+import  './MovieForm.css';
+
 
 interface State {
 	movies: Movie[];
@@ -58,18 +60,17 @@ class MovieForm extends Component<{}, State> {
 		}))
 	}
 
-
 	render() {
 		return (
-			<div>
+			<div className='window'>
 				<form onSubmit={this.addMovie}>
 					<input type='text' onChange={this.addMovieName}/>
-					<button type='submit'>Click</button>
+					<button type='submit'>Add</button>
 				</form>
 
-				{this.state.movies.map((movie, index) => (
+				{this.state.movies.map((movie) => (
 					<div key={movie.id}>
-						<MovieList id={movie.id} name={movie.name} index={index + 1}
+						<MovieList id={movie.id} name={movie.name}
 								   inputOnChange={e => this.editMovieName(e, movie.id)}/>
 						<button type='button' onClick={() => this.deleteMovie(movie.id)}>X</button>
 					</div>

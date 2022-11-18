@@ -1,0 +1,16 @@
+
+
+.watch-list{
+display: inline-block;
+    border-radius: 5px;
+    background: #C3C3C3;
+    box-shadow: inset -2px -2px 0px #262626, inset 2px 2px 0px #F0F0F0, inset -4px -4px 0px #7E7E7E;
+    width: 50%;
+    height: 100px;
+}
+
+.watch-list button{
+    background: #C0C0EB;
+    top: 30px;
+    right: 20px;
+}
