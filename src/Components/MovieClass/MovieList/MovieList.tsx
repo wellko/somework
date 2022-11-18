@@ -2,7 +2,6 @@ import React from 'react';
 import {MovieForList} from "../../../types";
 import './MovieList.css';
 
-
 class MovieList extends React.Component<MovieForList> {
     shouldComponentUpdate(nextProps: Readonly<MovieForList>): boolean {
         return this.props.name !== nextProps.name;

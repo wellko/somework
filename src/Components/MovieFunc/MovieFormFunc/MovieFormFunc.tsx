@@ -2,12 +2,10 @@ import React, {useState} from 'react';
 import {Movie} from "../../../types";
 import MovieListFunc from "../MovieListFunc/MovieListFunc";
 
-
 interface State {
     movies: Movie[];
     newMovie: Movie;
 }
-
 
 const MovieFormFunc = () => {
 
@@ -72,7 +70,7 @@ const MovieFormFunc = () => {
             {state.movies.map((movie) => (
                 <div key={movie.id}>
                     <MovieListFunc id={movie.id} name={movie.name}
-                               inputOnChange={e => editMovieName(e, movie.id)}/>
+                                   inputOnChange={e => editMovieName(e, movie.id)}/>
                     <button type='button' onClick={() => deleteMovie(movie.id)}>X</button>
                 </div>
             ))}

@@ -5,8 +5,6 @@ interface props {
     onClick: React.MouseEventHandler
 }
 
-
-
 class ButtonForJoke extends Component<props> {
     componentDidUpdate() {
         return false

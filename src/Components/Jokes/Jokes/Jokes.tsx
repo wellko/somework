@@ -18,18 +18,13 @@ const Jokes = () => {
 			}
 		};
 		fetchData().catch(e => console.error(e));
-	}
-
+	};
 
 	const url = 'https://api.chucknorris.io/jokes/random';
 
-
 	useEffect(() => {
 		getJokes();
-	}, []);
-
-
-
+	}, [])
 
 	return (
 		<div>
