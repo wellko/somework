@@ -19,10 +19,13 @@ class MovieForm extends Component<{}, State> {
 
 	addMovie = (e: React.FormEvent) => {
 		e.preventDefault();
-		this.setState(prev => ({
-			...prev,
-			movies: [...prev.movies, this.state.newMovie]
-		}))
+		if (!this.state.movies.includes(this.state.newMovie)){
+			this.setState(prev => ({
+				...prev,
+				movies: [...prev.movies, this.state.newMovie]
+			}))
+		}
+		else {alert('Movie with such id already added')}
 	}
 
 	addMovieName = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -35,9 +38,16 @@ class MovieForm extends Component<{}, State> {
 		}))
 	}
 
-	editMovieName = (e: React.ChangeEvent<HTMLInputElement>) => {
-		this.state.movies.filter(result => result.id === '2')[0].name = e.target.value;
-	}
+	editMovieName = (e: React.ChangeEvent<HTMLInputElement>, id: string) => {
+		const index = this.state.movies.findIndex(item => item.id === id)
+		this.setState(prev => {
+			const itemsCopy = {...prev};
+			const itemCopy = {...itemsCopy.movies[index]};
+			itemCopy.name = e.target.value;
+			itemsCopy.movies[index] = itemCopy;
+			return itemsCopy
+			}
+		)}
 
 	deleteMovie = (id: string) => {
 		this.setState(prev => ({
@@ -59,7 +69,8 @@ class MovieForm extends Component<{}, State> {
 
 				{this.state.movies.map((movie, index) => (
 					<div key={movie.id}>
-						<MovieList id={movie.id} name={movie.name} index={index + 1} inputOnChange={this.editMovieName}/>
+						<MovieList id={movie.id} name={movie.name} index={index + 1}
+								   inputOnChange={e => this.editMovieName(e, movie.id)}/>
 						<button type='button' onClick={() => this.deleteMovie(movie.id)}>X</button>
 					</div>
 				))}

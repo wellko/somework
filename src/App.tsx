@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
 import MovieForm from "./Components/MovieClass/MovieForm";
-import {Movie} from "./types";
+import Jokes from "./Components/Jokes/Jokes";
 
 
 function App() {
@@ -8,6 +8,7 @@ function App() {
   return (
     <div className="App">
    <MovieForm />
+        <Jokes/>
     </div>
   );
 }

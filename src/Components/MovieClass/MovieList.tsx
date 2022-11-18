@@ -1,18 +1,20 @@
 import React from 'react';
-import {Movie} from "../../types";
+import {MovieForList} from "../../types";
 
 
+class MovieList extends React.Component<MovieForList> {
+	shouldComponentUpdate(nextProps: Readonly<MovieForList>): boolean {
+		return this.props.name !== nextProps.name;
+	}
 
-const MovieList = (props:Movie) => {
-
-
-
-	return (
-		<div className='watch-list'>
-			<input type='text' value={props.name} onChange={() => props.inputOnChange(props.id)}></input>
-			<span>#{props.index}</span>
-		</div>
-	);
-};
+	render() {
+		return (
+			<div className='watch-list'>
+				<input type='text' value={this.props.name} onChange={e => this.props.inputOnChange(e)}></input>
+				<span>#{this.props.index}</span>
+			</div>
+		);
+	}
+}
 
 export default MovieList;
