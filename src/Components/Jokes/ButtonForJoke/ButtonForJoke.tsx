@@ -13,7 +13,7 @@ class ButtonForJoke extends Component<props> {
     render() {
         return (
             <div>
-                <button type='button' onClick={this.props.onClick} className='add_btn'>Add new Joke</button>
+                <button type='button' onClick={this.props.onClick} className='add_btn'>Get 5 new Jokes</button>
             </div>
         );
     }
